@@ -22,9 +22,11 @@ public class GameMgr : MonoBehaviour {
 			lastMousePosition = Input.mousePosition;
 			//Vector2 ray = new Ray2D( lastMousePosition, 0 );
 			Vector3 worldPt = Camera.main.ScreenToWorldPoint( lastMousePosition);
-			RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint( lastMousePosition), Vector2.zero);
+			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); 
+				//new Ray(Camera.main.ScreenToWorldPoint( lastMousePosition), Vector3.back);
+			RaycastHit hit; // = Physics.Raycast(Camera.main.ScreenToWorldPoint( lastMousePosition), Vector3.back, out ray); //distance 350 for z positioning in 2d layers
 
-			if(hit.collider != null)
+			if(Physics.Raycast(ray, out hit) && hit.collider != null)
 			{
 				Card temp = hit.collider.gameObject.GetComponent<Card>();
 				//temp = temp.GetComponent<Card>() as Card; //ensure it's a card
@@ -37,7 +39,7 @@ public class GameMgr : MonoBehaviour {
 		}
 		if(cardMoving != null)
 		{ //todo: offset
-			cardMoving.transform.position = this.transformWithZ(Camera.main.ScreenToWorldPoint(Input.mousePosition) - cardOffset,0);
+			cardMoving.transform.position = this.transformWithZ(Camera.main.ScreenToWorldPoint(Input.mousePosition) - cardOffset, cardMoving.transform.position.z);
 		}
 
 		if (Input.GetMouseButtonUp (0) == true)

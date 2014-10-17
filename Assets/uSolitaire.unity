@@ -128,7 +128,7 @@ GameObject:
   - 4: {fileID: 47794081}
   - 212: {fileID: 47794083}
   - 114: {fileID: 47794082}
-  - 61: {fileID: 47794084}
+  - 65: {fileID: 47794084}
   m_Layer: 0
   m_Name: Card
   m_TagString: Untagged
@@ -186,102 +186,21 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 972e4b273fe3bac4682404064b6a05cd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
---- !u!61 &47794084
-BoxCollider2D:
+--- !u!65 &47794084
+BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6100000, guid: 21fc1043b79d41e4081e04d5ae36946b,
+  m_PrefabParentObject: {fileID: 6500000, guid: 21fc1043b79d41e4081e04d5ae36946b,
     type: 2}
   m_PrefabInternal: {fileID: 649410499}
   m_GameObject: {fileID: 47794080}
-  m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Size: {x: 4.26999998, y: 6.28000021}
-  m_Center: {x: 0, y: 0}
---- !u!1 &129557686
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100000, guid: 21fc1043b79d41e4081e04d5ae36946b, type: 2}
-  m_PrefabInternal: {fileID: 2058268241}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 129557687}
-  - 212: {fileID: 129557689}
-  - 114: {fileID: 129557688}
-  - 61: {fileID: 129557690}
-  m_Layer: 0
-  m_Name: Card
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &129557687
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400000, guid: 21fc1043b79d41e4081e04d5ae36946b, type: 2}
-  m_PrefabInternal: {fileID: 2058268241}
-  m_GameObject: {fileID: 129557686}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.07245898, y: 3.74557352, z: -.00891000032}
-  m_LocalScale: {x: .597841978, y: .733949006, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1391460909}
---- !u!114 &129557688
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400000, guid: 21fc1043b79d41e4081e04d5ae36946b,
-    type: 2}
-  m_PrefabInternal: {fileID: 2058268241}
-  m_GameObject: {fileID: 129557686}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6c3153e3b0335e4985a13de97fb099d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  deck: {fileID: 0}
-  next: {fileID: 0}
-  spriteR: {fileID: 129557689}
-  Suite: 0
-  Val: 0
---- !u!212 &129557689
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 21200000, guid: 21fc1043b79d41e4081e04d5ae36946b,
-    type: 2}
-  m_PrefabInternal: {fileID: 2058268241}
-  m_GameObject: {fileID: 129557686}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_LightProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_SortingLayerID: 0
-  m_Sprite: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
---- !u!61 &129557690
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6100000, guid: 21fc1043b79d41e4081e04d5ae36946b,
-    type: 2}
-  m_PrefabInternal: {fileID: 2058268241}
-  m_GameObject: {fileID: 129557686}
-  m_Enabled: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Size: {x: 4.26999998, y: 6.28000021}
-  m_Center: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 4.26999998, y: 6.28000021, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &152249202
 Prefab:
   m_ObjectHideFlags: 0
@@ -419,7 +338,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startDecks: 0
-  laidCardOffset: {x: 0, y: 0}
+  cardOffset: {x: 0, y: 0, z: 0}
   cardPrefab: {fileID: 0}
 --- !u!1 &311684051
 GameObject:
@@ -431,7 +350,7 @@ GameObject:
   - 4: {fileID: 311684052}
   - 212: {fileID: 311684054}
   - 114: {fileID: 311684053}
-  - 61: {fileID: 311684055}
+  - 65: {fileID: 311684055}
   m_Layer: 0
   m_Name: Card
   m_TagString: Untagged
@@ -489,20 +408,21 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 972e4b273fe3bac4682404064b6a05cd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
---- !u!61 &311684055
-BoxCollider2D:
+--- !u!65 &311684055
+BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6100000, guid: 21fc1043b79d41e4081e04d5ae36946b,
+  m_PrefabParentObject: {fileID: 6500000, guid: 21fc1043b79d41e4081e04d5ae36946b,
     type: 2}
   m_PrefabInternal: {fileID: 835566859}
   m_GameObject: {fileID: 311684051}
-  m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Size: {x: 4.26999998, y: 6.28000021}
-  m_Center: {x: 0, y: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.26999998, y: 6.28000021, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &321384495
 GameObject:
   m_ObjectHideFlags: 0
@@ -544,7 +464,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startDecks: 0
-  laidCardOffset: {x: 0, y: 0}
+  cardOffset: {x: 0, y: 0, z: 0}
   cardPrefab: {fileID: 0}
 --- !u!1001 &434827986
 Prefab:
@@ -654,7 +574,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 11.2200003
+  orthographic size: 13.631547
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -715,7 +635,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startDecks: 0
-  laidCardOffset: {x: 0, y: 0}
+  cardOffset: {x: 0, y: 0, z: 0}
   cardPrefab: {fileID: 0}
 --- !u!1 &534897837
 GameObject:
@@ -758,7 +678,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startDecks: 0
-  laidCardOffset: {x: 0, y: 0}
+  cardOffset: {x: 0, y: 0, z: 0}
   cardPrefab: {fileID: 0}
 --- !u!1 &539001131
 GameObject:
@@ -770,7 +690,7 @@ GameObject:
   - 4: {fileID: 539001132}
   - 212: {fileID: 539001134}
   - 114: {fileID: 539001133}
-  - 61: {fileID: 539001135}
+  - 65: {fileID: 539001135}
   m_Layer: 0
   m_Name: Card
   m_TagString: Untagged
@@ -786,7 +706,7 @@ Transform:
   m_GameObject: {fileID: 539001131}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.07245922, y: 3.74557352, z: -.00891017914}
-  m_LocalScale: {x: .597841978, y: .733949006, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1644395124}
 --- !u!114 &539001133
@@ -828,20 +748,21 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 972e4b273fe3bac4682404064b6a05cd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
---- !u!61 &539001135
-BoxCollider2D:
+--- !u!65 &539001135
+BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6100000, guid: 21fc1043b79d41e4081e04d5ae36946b,
+  m_PrefabParentObject: {fileID: 6500000, guid: 21fc1043b79d41e4081e04d5ae36946b,
     type: 2}
   m_PrefabInternal: {fileID: 2092391178}
   m_GameObject: {fileID: 539001131}
-  m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Size: {x: 4.26999998, y: 6.28000021}
-  m_Center: {x: 0, y: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.26999998, y: 6.28000021, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &580591012
 GameObject:
   m_ObjectHideFlags: 0
@@ -883,7 +804,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startDecks: 0
-  laidCardOffset: {x: 0, y: 0}
+  cardOffset: {x: 0, y: 0, z: 0}
   cardPrefab: {fileID: 0}
 --- !u!1001 &613654190
 Prefab:
@@ -985,7 +906,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startDecks: 0
-  laidCardOffset: {x: 0, y: 0}
+  cardOffset: {x: 0, y: 0, z: 0}
   cardPrefab: {fileID: 0}
 --- !u!1001 &649410499
 Prefab:
@@ -1089,7 +1010,7 @@ GameObject:
   - 4: {fileID: 799318068}
   - 212: {fileID: 799318070}
   - 114: {fileID: 799318069}
-  - 61: {fileID: 799318071}
+  - 65: {fileID: 799318071}
   m_Layer: 0
   m_Name: Card
   m_TagString: Untagged
@@ -1147,20 +1068,21 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 972e4b273fe3bac4682404064b6a05cd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
---- !u!61 &799318071
-BoxCollider2D:
+--- !u!65 &799318071
+BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6100000, guid: 21fc1043b79d41e4081e04d5ae36946b,
+  m_PrefabParentObject: {fileID: 6500000, guid: 21fc1043b79d41e4081e04d5ae36946b,
     type: 2}
   m_PrefabInternal: {fileID: 1864274691}
   m_GameObject: {fileID: 799318067}
-  m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Size: {x: 4.26999998, y: 6.28000021}
-  m_Center: {x: 0, y: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.26999998, y: 6.28000021, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &804482904
 GameObject:
   m_ObjectHideFlags: 0
@@ -1171,7 +1093,7 @@ GameObject:
   - 4: {fileID: 804482905}
   - 212: {fileID: 804482907}
   - 114: {fileID: 804482906}
-  - 61: {fileID: 804482908}
+  - 65: {fileID: 804482908}
   m_Layer: 0
   m_Name: Card
   m_TagString: Untagged
@@ -1229,20 +1151,21 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 972e4b273fe3bac4682404064b6a05cd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
---- !u!61 &804482908
-BoxCollider2D:
+--- !u!65 &804482908
+BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6100000, guid: 21fc1043b79d41e4081e04d5ae36946b,
+  m_PrefabParentObject: {fileID: 6500000, guid: 21fc1043b79d41e4081e04d5ae36946b,
     type: 2}
   m_PrefabInternal: {fileID: 1586379975}
   m_GameObject: {fileID: 804482904}
-  m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Size: {x: 4.26999998, y: 6.28000021}
-  m_Center: {x: 0, y: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.26999998, y: 6.28000021, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &823983786
 GameObject:
   m_ObjectHideFlags: 0
@@ -1284,7 +1207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startDecks: 0
-  laidCardOffset: {x: 0, y: 0}
+  cardOffset: {x: 0, y: 0, z: 0}
   cardPrefab: {fileID: 0}
 --- !u!1001 &835566859
 Prefab:
@@ -1555,7 +1478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startDecks: 0
-  laidCardOffset: {x: 0, y: 0}
+  cardOffset: {x: 0, y: 0, z: 0}
   cardPrefab: {fileID: 0}
 --- !u!1 &1130599960
 GameObject:
@@ -1598,7 +1521,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startDecks: 0
-  laidCardOffset: {x: 0, y: 0}
+  cardOffset: {x: 0, y: 0, z: 0}
   cardPrefab: {fileID: 0}
 --- !u!1 &1146028646
 GameObject:
@@ -1641,7 +1564,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startDecks: 0
-  laidCardOffset: {x: 0, y: 0}
+  cardOffset: {x: 0, y: 0, z: 0}
   cardPrefab: {fileID: 0}
 --- !u!1001 &1158883998
 Prefab:
@@ -1701,7 +1624,7 @@ GameObject:
   - 4: {fileID: 1231863105}
   - 212: {fileID: 1231863107}
   - 114: {fileID: 1231863106}
-  - 61: {fileID: 1231863108}
+  - 65: {fileID: 1231863108}
   m_Layer: 0
   m_Name: Card
   m_TagString: Untagged
@@ -1759,20 +1682,21 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 972e4b273fe3bac4682404064b6a05cd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
---- !u!61 &1231863108
-BoxCollider2D:
+--- !u!65 &1231863108
+BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6100000, guid: 21fc1043b79d41e4081e04d5ae36946b,
+  m_PrefabParentObject: {fileID: 6500000, guid: 21fc1043b79d41e4081e04d5ae36946b,
     type: 2}
   m_PrefabInternal: {fileID: 158485038}
   m_GameObject: {fileID: 1231863104}
-  m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Size: {x: 4.26999998, y: 6.28000021}
-  m_Center: {x: 0, y: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.26999998, y: 6.28000021, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1288629489
 Prefab:
   m_ObjectHideFlags: 0
@@ -1915,7 +1839,7 @@ GameObject:
   - 4: {fileID: 1326730932}
   - 212: {fileID: 1326730934}
   - 114: {fileID: 1326730933}
-  - 61: {fileID: 1326730935}
+  - 65: {fileID: 1326730935}
   m_Layer: 0
   m_Name: Card
   m_TagString: Untagged
@@ -1973,20 +1897,21 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 972e4b273fe3bac4682404064b6a05cd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
---- !u!61 &1326730935
-BoxCollider2D:
+--- !u!65 &1326730935
+BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6100000, guid: 21fc1043b79d41e4081e04d5ae36946b,
+  m_PrefabParentObject: {fileID: 6500000, guid: 21fc1043b79d41e4081e04d5ae36946b,
     type: 2}
   m_PrefabInternal: {fileID: 152249202}
   m_GameObject: {fileID: 1326730931}
-  m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Size: {x: 4.26999998, y: 6.28000021}
-  m_Center: {x: 0, y: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.26999998, y: 6.28000021, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1348561057
 GameObject:
   m_ObjectHideFlags: 0
@@ -1997,7 +1922,7 @@ GameObject:
   - 4: {fileID: 1348561058}
   - 212: {fileID: 1348561060}
   - 114: {fileID: 1348561059}
-  - 61: {fileID: 1348561061}
+  - 65: {fileID: 1348561061}
   m_Layer: 0
   m_Name: Card
   m_TagString: Untagged
@@ -2055,20 +1980,21 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 972e4b273fe3bac4682404064b6a05cd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
---- !u!61 &1348561061
-BoxCollider2D:
+--- !u!65 &1348561061
+BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6100000, guid: 21fc1043b79d41e4081e04d5ae36946b,
+  m_PrefabParentObject: {fileID: 6500000, guid: 21fc1043b79d41e4081e04d5ae36946b,
     type: 2}
   m_PrefabInternal: {fileID: 892095683}
   m_GameObject: {fileID: 1348561057}
-  m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Size: {x: 4.26999998, y: 6.28000021}
-  m_Center: {x: 0, y: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.26999998, y: 6.28000021, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1391460908
 GameObject:
   m_ObjectHideFlags: 0
@@ -2094,8 +2020,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -12.3132725, y: .742440701, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 129557687}
+  m_Children: []
   m_Father: {fileID: 621552512}
 --- !u!114 &1391460910
 MonoBehaviour:
@@ -2110,7 +2035,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startDecks: 1
-  laidCardOffset: {x: 0, y: 0}
+  cardOffset: {x: 0, y: -.330000013, z: 0}
   cardPrefab: {fileID: 11400000, guid: 21fc1043b79d41e4081e04d5ae36946b, type: 2}
 --- !u!1001 &1420495930
 Prefab:
@@ -2315,7 +2240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startDecks: 0
-  laidCardOffset: {x: 0, y: 0}
+  cardOffset: {x: 0, y: 0, z: 0}
   cardPrefab: {fileID: 0}
 --- !u!4 &1644395124
 Transform:
@@ -2339,7 +2264,7 @@ GameObject:
   - 4: {fileID: 1692161115}
   - 212: {fileID: 1692161117}
   - 114: {fileID: 1692161116}
-  - 61: {fileID: 1692161118}
+  - 65: {fileID: 1692161118}
   m_Layer: 0
   m_Name: Card
   m_TagString: Untagged
@@ -2397,20 +2322,21 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 972e4b273fe3bac4682404064b6a05cd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
---- !u!61 &1692161118
-BoxCollider2D:
+--- !u!65 &1692161118
+BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6100000, guid: 21fc1043b79d41e4081e04d5ae36946b,
+  m_PrefabParentObject: {fileID: 6500000, guid: 21fc1043b79d41e4081e04d5ae36946b,
     type: 2}
   m_PrefabInternal: {fileID: 613654190}
   m_GameObject: {fileID: 1692161114}
-  m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Size: {x: 4.26999998, y: 6.28000021}
-  m_Center: {x: 0, y: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.26999998, y: 6.28000021, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1716051401
 GameObject:
   m_ObjectHideFlags: 0
@@ -2421,7 +2347,7 @@ GameObject:
   - 4: {fileID: 1716051402}
   - 212: {fileID: 1716051404}
   - 114: {fileID: 1716051403}
-  - 61: {fileID: 1716051405}
+  - 65: {fileID: 1716051405}
   m_Layer: 0
   m_Name: Card
   m_TagString: Untagged
@@ -2479,20 +2405,21 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 972e4b273fe3bac4682404064b6a05cd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
---- !u!61 &1716051405
-BoxCollider2D:
+--- !u!65 &1716051405
+BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6100000, guid: 21fc1043b79d41e4081e04d5ae36946b,
+  m_PrefabParentObject: {fileID: 6500000, guid: 21fc1043b79d41e4081e04d5ae36946b,
     type: 2}
   m_PrefabInternal: {fileID: 1889412657}
   m_GameObject: {fileID: 1716051401}
-  m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Size: {x: 4.26999998, y: 6.28000021}
-  m_Center: {x: 0, y: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.26999998, y: 6.28000021, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1846572582
 GameObject:
   m_ObjectHideFlags: 0
@@ -2534,7 +2461,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startDecks: 0
-  laidCardOffset: {x: 0, y: 0}
+  cardOffset: {x: 0, y: 0, z: 0}
   cardPrefab: {fileID: 0}
 --- !u!1001 &1864274691
 Prefab:
@@ -2627,7 +2554,7 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: .733949304
       objectReference: {fileID: 0}
-    - target: {fileID: 6100000, guid: 21fc1043b79d41e4081e04d5ae36946b, type: 2}
+    - target: {fileID: 0}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -2646,7 +2573,7 @@ GameObject:
   - 4: {fileID: 1961662159}
   - 212: {fileID: 1961662161}
   - 114: {fileID: 1961662160}
-  - 61: {fileID: 1961662162}
+  - 65: {fileID: 1961662162}
   m_Layer: 0
   m_Name: Card
   m_TagString: Untagged
@@ -2704,20 +2631,21 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 972e4b273fe3bac4682404064b6a05cd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
---- !u!61 &1961662162
-BoxCollider2D:
+--- !u!65 &1961662162
+BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6100000, guid: 21fc1043b79d41e4081e04d5ae36946b,
+  m_PrefabParentObject: {fileID: 6500000, guid: 21fc1043b79d41e4081e04d5ae36946b,
     type: 2}
   m_PrefabInternal: {fileID: 1158883998}
   m_GameObject: {fileID: 1961662158}
-  m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Size: {x: 4.26999998, y: 6.28000021}
-  m_Center: {x: 0, y: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.26999998, y: 6.28000021, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1988625067
 Prefab:
   m_ObjectHideFlags: 0
@@ -2766,6 +2694,14 @@ Prefab:
       value: 
       objectReference: {fileID: 11400000, guid: 21fc1043b79d41e4081e04d5ae36946b,
         type: 2}
+    - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: laidCardOffset.y
+      value: -.330000013
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: cardOffset.y
+      value: -.330000013
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
   m_RootGameObject: {fileID: 1391460908}
@@ -2812,7 +2748,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startDecks: 0
-  laidCardOffset: {x: 0, y: 0}
+  cardOffset: {x: 0, y: 0, z: 0}
   cardPrefab: {fileID: 0}
 --- !u!1001 &1998986704
 Prefab:
@@ -2897,54 +2833,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7946c0dbc5c0c4140aee24342d88db36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &2058268241
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1391460909}
-    m_Modifications:
-    - target: {fileID: 400000, guid: 21fc1043b79d41e4081e04d5ae36946b, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 2.07245898
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 21fc1043b79d41e4081e04d5ae36946b, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 3.74557352
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 21fc1043b79d41e4081e04d5ae36946b, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -.00891000032
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 21fc1043b79d41e4081e04d5ae36946b, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 21fc1043b79d41e4081e04d5ae36946b, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 21fc1043b79d41e4081e04d5ae36946b, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 21fc1043b79d41e4081e04d5ae36946b, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 21fc1043b79d41e4081e04d5ae36946b, type: 2}
-      propertyPath: m_LocalScale.x
-      value: .597841978
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 21fc1043b79d41e4081e04d5ae36946b, type: 2}
-      propertyPath: m_LocalScale.y
-      value: .733949006
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 21fc1043b79d41e4081e04d5ae36946b, type: 2}
-  m_RootGameObject: {fileID: 129557686}
-  m_IsPrefabParent: 0
-  m_IsExploded: 1
 --- !u!1001 &2092391178
 Prefab:
   m_ObjectHideFlags: 0
@@ -2995,7 +2883,7 @@ GameObject:
   - 4: {fileID: 2118321166}
   - 212: {fileID: 2118321168}
   - 114: {fileID: 2118321167}
-  - 61: {fileID: 2118321169}
+  - 65: {fileID: 2118321169}
   m_Layer: 0
   m_Name: Card
   m_TagString: Untagged
@@ -3053,20 +2941,21 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 972e4b273fe3bac4682404064b6a05cd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
---- !u!61 &2118321169
-BoxCollider2D:
+--- !u!65 &2118321169
+BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6100000, guid: 21fc1043b79d41e4081e04d5ae36946b,
+  m_PrefabParentObject: {fileID: 6500000, guid: 21fc1043b79d41e4081e04d5ae36946b,
     type: 2}
   m_PrefabInternal: {fileID: 434827986}
   m_GameObject: {fileID: 2118321165}
-  m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Size: {x: 4.26999998, y: 6.28000021}
-  m_Center: {x: 0, y: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.26999998, y: 6.28000021, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &2120913449
 Prefab:
   m_ObjectHideFlags: 0

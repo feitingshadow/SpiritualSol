@@ -8,12 +8,12 @@ public class Deck : MonoBehaviour {
 	//public Card firstCard = null;
 	public int startDecks = 0; //Number of decks of card the deck should instantiate
 
-	public Vector2 laidCardOffset; //how far every card in the pile moves downward from the one above it.
+	public Vector3 cardOffset = Vector3.zero; //how far every card in the pile moves downward from the one above it.
 	//used so the layoutCards function can be the same for every deck.
 
 	public Card cardPrefab;
 	
-	private Vector3 cardOffset = Vector3.zero;
+	//private Vector3 cardOffset = Vector3.zero;
 	private ArrayList cardsArray = new ArrayList();
 
 	// Use this for initialization
@@ -25,7 +25,6 @@ public class Deck : MonoBehaviour {
 			{
 				this.CreateCardDeck();
 			}
-			cardOffset.y = 1;
 			this.LayoutDeck();
 		}
 	}
@@ -48,7 +47,6 @@ public class Deck : MonoBehaviour {
 				//sRenderer = tempCard.GetComponent("SpriteRenderer") as SpriteRenderer;
 				tempCard.Suite = c;
 				tempCard.Val = i;
-
 				tempCard.RefreshImage();
 			}
 		}
@@ -107,7 +105,7 @@ public class Deck : MonoBehaviour {
 		for(int i = 0; i < cardsArray.Count; i++)
 		{
 			tempCard = (Card)cardsArray[i];
-
+			tempCard.spriteR.sortingOrder = i;
 			if(i == 0)
 			{
 				tempCard.transform.parent = this.transform;
@@ -116,7 +114,7 @@ public class Deck : MonoBehaviour {
 			else
 			{
 				tempCard.transform.parent = lastCard.transform;
-				tempCard.transform.localPosition = new Vector3(cardOffset.x, cardOffset.y, cardOffset.z);
+				tempCard.transform.localPosition = new Vector3(cardOffset.x, cardOffset.y, -i/30.0f);
 			}
 
 			lastCard = tempCard;
