@@ -15,7 +15,9 @@ public class Deck : MonoBehaviour {
 	
 	//private Vector3 cardOffset = Vector3.zero;
 	private ArrayList cardsArray = new ArrayList();
-
+	//insert and remove are very expensive operations on arrays, creating 2 to reduce shuffle-sorting costs.
+	private ArrayList shuffleArray = new ArrayList();
+	
 	// Use this for initialization
 	void Start () 
 	{
@@ -25,7 +27,7 @@ public class Deck : MonoBehaviour {
 			{
 				this.CreateCardDeck();
 			}
-			this.LayoutDeck();
+			this.Shuffle(); //calls layout
 		}
 	}
 
@@ -95,6 +97,28 @@ public class Deck : MonoBehaviour {
 	public void Shuffle()
 	{
 		//Todo, sort randomly the cards in the deck
+
+		int maxC = cardsArray.Count;
+		Card tempSwapping = null;
+		int randNumber = 0;
+
+		for(int i = 0; i < maxC; i++)
+		{
+			randNumber = Random.Range(0, cardsArray.Count); //int = exclusive, float = inclusive - unity forums, but precision gives it away
+			Debug.Log ("RandNum = " + randNumber);
+			tempSwapping = cardsArray[randNumber] as Card;
+			cardsArray.RemoveAt(randNumber);
+			shuffleArray.Add (tempSwapping);
+		}
+	//	Debug.Log ("Cards Arr C: " + cardsArray.Count);
+		cardsArray.AddRange (shuffleArray);
+//		for(int i = 0; i < maxC; i++)
+//		{
+//			cardsArray.Add(shuffleArray[i]);
+//		}
+//		Debug.Log ("Shuff Arr C: " + shuffleArray.Count);
+		shuffleArray.Clear ();
+		this.LayoutDeck();
 	}
 
 
