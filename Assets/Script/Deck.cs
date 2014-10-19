@@ -12,22 +12,32 @@ public class Deck : MonoBehaviour {
 	//used so the layoutCards function can be the same for every deck.
 
 	public Card cardPrefab;
-	
+
+	public GameMgr gameMgr;
+
 	//private Vector3 cardOffset = Vector3.zero;
 	private ArrayList cardsArray = new ArrayList();
 	//insert and remove are very expensive operations on arrays, creating 2 to reduce shuffle-sorting costs.
 	private ArrayList shuffleArray = new ArrayList();
-	
+
+	//The below are the solitaire rules. Tableaus (the 7 piles) take decrements with alternating colors. Win piles go up, from zero
+	//These public values allow you to change the rules via editor, without implementing Delegate.
+	public int addCardRuleIncrement = 1; //winpiles and tableau uses, -1 and 1 respective
+	public bool alternateRule; //does the color have to change or stay same
+	public bool emptyAscendingRule; // Win piles ascend, so yes. Tableaus must start with King, they go downward
+	public bool usesRules = true; //the deck won't use rules, it just gets added to. 
 	// Use this for initialization
-	void Start () 
+	void Awake () 
 	{
 		if( (cardPrefab != null))
 		{
 			for(int i = 0; i < startDecks; i++) //create all decks for the game!
 			{
-				this.CreateCardDeck();
+				this.CreateCardDeck(); //this should be handled by GameManager instead, to allow for more
 			}
+
 			this.Shuffle(); //calls layout
+			this.LayoutDeck();
 		}
 	}
 
@@ -59,6 +69,41 @@ public class Deck : MonoBehaviour {
 	
 	}
 
+	//lots of todo's on ensuring i is within range everywhere on ArrayLists
+	public ArrayList GetCardsFromIndex(int i)
+	{
+		return cardsArray.GetRange(i, cardsArray.Count - i); //todo, try/catch, might go OOBounds.
+	}
+
+	public ArrayList GetAllCardsInDeck()
+	{
+		return new ArrayList(this.cardsArray);
+	}
+
+	public void RemoveCardsFromIndex(int ind)
+	{
+		try
+		{
+		//	Debug.Log ("Index: " + ind + " Count is: " + cardsArray.Count);
+			if(cardsArray.Count > ind)
+			{
+				cardsArray.RemoveRange (ind, cardsArray.Count - ind); 
+			}
+		}
+		catch (UnityException ex)
+		{
+			Debug.Log ("Remove count is out of range Ex:" + ex.Message);
+		}
+		finally { //nothing
+		}
+
+	}
+
+	public void RemoveEveryCard()
+	{
+		cardsArray.Clear (); 
+	}
+
 //	public void layoutCards()
 //	{
 //		//physically attach cards
@@ -86,12 +131,22 @@ public class Deck : MonoBehaviour {
 
 	public void addCard(Card card)
 	{
-//		if(firstCard == null)
-//		{
-//			firstCard = card;
-//		}
-//
-//		this.layoutCards();
+		cardsArray.Add(card);
+	}
+
+	public int CardCount() //this is a safe function, need more of these to address error checks
+	{ //protects the property from being direclty changed
+		return cardsArray.Count;
+	}
+
+	public void addCardArray(ArrayList cards)
+	{
+		cardsArray.AddRange(cards); //todo, check for errors
+	}
+
+	public void addCardArrayAtIndex(ArrayList cards, int ind)
+	{
+		cardsArray.InsertRange(ind, cards); //todo, check for within bounds
 	}
 
 	public void Shuffle()
@@ -105,18 +160,13 @@ public class Deck : MonoBehaviour {
 		for(int i = 0; i < maxC; i++)
 		{
 			randNumber = Random.Range(0, cardsArray.Count); //int = exclusive, float = inclusive - unity forums, but precision gives it away
-			Debug.Log ("RandNum = " + randNumber);
+//			Debug.Log ("RandNum = " + randNumber);
 			tempSwapping = cardsArray[randNumber] as Card;
 			cardsArray.RemoveAt(randNumber);
 			shuffleArray.Add (tempSwapping);
 		}
 	//	Debug.Log ("Cards Arr C: " + cardsArray.Count);
 		cardsArray.AddRange (shuffleArray);
-//		for(int i = 0; i < maxC; i++)
-//		{
-//			cardsArray.Add(shuffleArray[i]);
-//		}
-//		Debug.Log ("Shuff Arr C: " + shuffleArray.Count);
 		shuffleArray.Clear ();
 		this.LayoutDeck();
 	}
