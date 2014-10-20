@@ -195,6 +195,28 @@ public class Deck : MonoBehaviour {
 		}
 	}
 
+	public void faceCardsWithRange(int startIndex, int endIndex, bool isFrontFacing) //lays out deck, ensure first to last index faces direction
+	{
+		//ensure safe handling
+		if(startIndex >= 0 && endIndex >= 0 && startIndex < cardsArray.Count && endIndex >= startIndex && endIndex < cardsArray.Count)
+		{
+			Card c = null;
+			for(int i = startIndex; i <= endIndex; i++)
+			{
+				c = cardsArray[i] as Card;
+				if(c.frontFacing != isFrontFacing)
+				{
+					c.flip(); //change if it doesn't match the desired direction/facing.
+				}
+			}
+		}
+		else
+		{
+			//trace and eliminate logic flaws if this happens to be called
+			Debug.Log ("Out of range for facing cards in deck. Start: " + startIndex + " end: " + endIndex);
+		}
+	}
+
 
 //	public string getSuiteNameFromNumber(int num)
 //	{

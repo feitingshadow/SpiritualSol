@@ -12,58 +12,70 @@ public class Card : MonoBehaviour {
 	public int Suite;
 	public int Val;
 
+	public bool frontFacing = true;
+
+	private static Sprite bg = Resources.Load("cardraw/cardBackOriginal", typeof(Sprite)) as Sprite;
+	private Sprite foreground = null;
 
 	public void RefreshImage()
 	{
-		string prefix = null;
-		string suffix = null;
-		string tempString = null;
-		string fullN = null;
-		bool capitalizeName = true;
-		if(Val == 1)
+		if(foreground == null) //more efficient, image stays in fg
 		{
-			prefix = "a";
-		}
-		else if(Val == 11)
-		{
-			prefix = "jack";
-		}
-		else if(Val == 12)
-		{
-			prefix = "queen";
-		}
-		else if(Val == 13)
-		{
-			prefix = "king";
+			string prefix = null;
+			string suffix = null;
+			string tempString = null;
+			string fullN = null;
+			bool capitalizeName = true;
+			if(Val == 1)
+			{
+				prefix = "a";
+			}
+			else if(Val == 11)
+			{
+				prefix = "jack";
+			}
+			else if(Val == 12)
+			{
+				prefix = "queen";
+			}
+			else if(Val == 13)
+			{
+				prefix = "king";
+			}
+			else
+			{
+				capitalizeName = false;
+				prefix = Val.ToString();
+			}
+			
+			suffix = this.getSuiteNameFromNumber(Suite);
+			
+			if(capitalizeName == true)
+			{
+				tempString = suffix; //giving example with "clubs"
+				suffix = suffix.Remove(1); // suffix = "c"
+				suffix = suffix.ToUpper();  //suffix = "C"
+				suffix = suffix + tempString.Substring(1); //suffix = "Clubs", appends tempString from 2nd letter (1 in array)
+				//convert first letter to capital.
+			}
+			fullN = prefix + suffix;
+			//Debug.Log (fullN);
+			
+			foreground = Resources.Load("cardraw/" + fullN, typeof(Sprite)) as Sprite;
+			if(foreground == null)
+			{
+				Debug.Log ("Failed to load card: " + fullN);
+			}
+			else
+			{
+				spriteR.sprite = foreground;
+			}
 		}
 		else
 		{
-			capitalizeName = false;
-			prefix = Val.ToString();
+
 		}
-		
-		suffix = this.getSuiteNameFromNumber(Suite);
-		
-		if(capitalizeName == true)
-		{
-			tempString = suffix; //giving example with "clubs"
-			suffix = suffix.Remove(1); // suffix = "c"
-			suffix = suffix.ToUpper();  //suffix = "C"
-			suffix = suffix + tempString.Substring(1); //suffix = "Clubs", appends tempString from 2nd letter (1 in array)
-			//convert first letter to capital.
-		}
-		fullN = prefix + suffix;
-		Debug.Log (fullN);
-		
-		Sprite tempSprite = Resources.Load("cardraw/" + fullN, typeof(Sprite)) as Sprite;
-		if(tempSprite == null)
-		{
-			Debug.Log ("Failed to load card: " + fullN);
-		}
-		else
-		{
-			spriteR.sprite = tempSprite;
-		}
+		doCardDisplay ();
 	}
 
 	void Awake ()
@@ -80,6 +92,25 @@ public class Card : MonoBehaviour {
 
 	}
 
+	public void flip()
+	{
+		frontFacing = !frontFacing;
+		doCardDisplay();
+	}
+
+	public void doCardDisplay()
+	{
+		if(frontFacing == true)
+		{
+			spriteR.sprite = foreground;
+		}
+		else
+		{
+			spriteR.sprite = bg;
+		}
+
+		this.collider.enabled = frontFacing; //don't allow bounds calcs on non front-facing images, requires buttons on top of decks since they normally are back-face
+	}
 
 	public string getSuiteNameFromNumber(int num)
 	{

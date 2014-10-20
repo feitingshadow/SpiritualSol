@@ -92,11 +92,23 @@ public class GameMgr : MonoBehaviour {
 	{
 		dealDeck.addCardArray( this.GetAllCards());
 
+//		foreach(Card c in dealDeck.car)
+//		{
+//			if(c.frontFacing)
+//			{
+//				c.flip ();
+//			}
+//		}
+
 		int handSize = 0;
 		for(int i = 0; i < tableauDeck.Length; i++)
 		{
 			this.MoveCardsFromIndexInDeckToIndexInDeck( dealDeck.CardCount()-i - 1, dealDeck, 0, tableauDeck[i]);
 			tableauDeck[i].LayoutDeck();
+			handSize = tableauDeck[i].CardCount();
+
+			tableauDeck[i].faceCardsWithRange(0, handSize - 1, false);
+			tableauDeck[i].faceCardsWithRange(handSize - 1, handSize - 1, true); //front face the card
 		}
 
 		dealDeck.LayoutDeck();
