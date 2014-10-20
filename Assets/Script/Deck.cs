@@ -203,10 +203,11 @@ public class Deck : MonoBehaviour {
 				{
 					//bool ret = true; //easier to assume truth and prove false, than to test if true down the line
 
-					if(alternateRule && ( card.IsSuiteEven() != lastCard.IsSuiteEven() ) )
+					if(alternateRule == true && ( card.IsSuiteEven() == lastCard.IsSuiteEven() ) )
 					{
 						retVal = false;
 					}
+					Debug.Log ("Testing addable val: " + card.Val + " against Last: " + lastCard.Val + " Increment v: " + addCardRuleIncrement);
 					if( (lastCard.Val + addCardRuleIncrement) != card.Val)
 					{
 						retVal = false;

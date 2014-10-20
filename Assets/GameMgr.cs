@@ -98,7 +98,7 @@ public class GameMgr : MonoBehaviour {
 				bool wentToNewDeck = false;
 
 				//cardMoving is the game object for purposes of motion, should rename
-				//Card movedCard = cardMoving.gameObject.GetComponent<Card>();
+				Card movedCard = cardMoving.gameObject.GetComponent<Card>();
 
 				if(Time.time - initialClickT < 0.3f) //if less than 0.3 seconds, tapped card, otherwise test for collision
 				{
@@ -140,7 +140,7 @@ public class GameMgr : MonoBehaviour {
 
 					foreach(Card c in possibleCards)
 					{
-						if(c.deck.CanAdd( c ) == true ) //can add, remove from here and add to that deck.
+						if(c.deck.CanAdd( movedCard ) == true ) //can add, remove from here and add to that deck.
 						{
 							c.deck.addCardArray ( moveDeck.GetCardsFromIndex(0));
 							moveDeck.RemoveEveryCard();
@@ -152,12 +152,13 @@ public class GameMgr : MonoBehaviour {
 				}
 				else //card was actively dragged somewhere, place or revert to last
 				{
-
+					//wentToNewDeck = true; //just b/c for testing
 				}
 
 				if(wentToNewDeck == false)
 				{
 					previousDeck.addCardArray ( moveDeck.GetCardsFromIndex(0));
+					moveDeck.RemoveCardsFromIndex(0);
 //					previousDeck.RemoveCardsFromIndex(0);
 					previousDeck.LayoutDeck();
 				}
