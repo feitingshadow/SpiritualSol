@@ -112,6 +112,11 @@ public class Card : MonoBehaviour {
 		this.collider.enabled = frontFacing; //don't allow bounds calcs on non front-facing images, requires buttons on top of decks since they normally are back-face
 	}
 
+	public bool IsSuiteEven()
+	{
+		return ((Suite % 2) == 0);
+	}
+
 	public string getSuiteNameFromNumber(int num)
 	{
 		switch(num)

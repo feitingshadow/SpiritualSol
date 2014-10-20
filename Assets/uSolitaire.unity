@@ -113,6 +113,10 @@ Prefab:
       propertyPath: m_Name
       value: Win
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: emptyAscendingRule
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
   m_RootGameObject: {fileID: 534897837}
@@ -162,8 +166,8 @@ MonoBehaviour:
   cardOffset: {x: 0, y: -.899999976, z: 0}
   cardPrefab: {fileID: 0}
   gameMgr: {fileID: 0}
-  addCardRuleIncrement: 1
-  alternateRule: 0
+  addCardRuleIncrement: -1
+  alternateRule: 1
   emptyAscendingRule: 0
   usesRules: 1
 --- !u!65 &236005203
@@ -224,7 +228,7 @@ MonoBehaviour:
   gameMgr: {fileID: 0}
   addCardRuleIncrement: 1
   alternateRule: 0
-  emptyAscendingRule: 0
+  emptyAscendingRule: 1
   usesRules: 1
 --- !u!65 &321384498
 BoxCollider:
@@ -364,7 +368,7 @@ MonoBehaviour:
   gameMgr: {fileID: 0}
   addCardRuleIncrement: 1
   alternateRule: 0
-  emptyAscendingRule: 0
+  emptyAscendingRule: 1
   usesRules: 1
 --- !u!65 &516259510
 BoxCollider:
@@ -424,7 +428,7 @@ MonoBehaviour:
   gameMgr: {fileID: 0}
   addCardRuleIncrement: 1
   alternateRule: 0
-  emptyAscendingRule: 0
+  emptyAscendingRule: 1
   usesRules: 1
 --- !u!65 &534897840
 BoxCollider:
@@ -477,6 +481,10 @@ Prefab:
       propertyPath: m_Name
       value: Junk
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: usesRules
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
   m_RootGameObject: {fileID: 1118145165}
@@ -526,8 +534,8 @@ MonoBehaviour:
   cardOffset: {x: 0, y: -.899999976, z: 0}
   cardPrefab: {fileID: 0}
   gameMgr: {fileID: 0}
-  addCardRuleIncrement: 1
-  alternateRule: 0
+  addCardRuleIncrement: -1
+  alternateRule: 1
   emptyAscendingRule: 0
   usesRules: 1
 --- !u!65 &580591015
@@ -645,6 +653,14 @@ Prefab:
       propertyPath: cardOffset.y
       value: -.899999976
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: addCardRuleIncrement
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: alternateRule
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
   m_RootGameObject: {fileID: 823983786}
@@ -694,8 +710,8 @@ MonoBehaviour:
   cardOffset: {x: 0, y: -.899999976, z: 0}
   cardPrefab: {fileID: 0}
   gameMgr: {fileID: 0}
-  addCardRuleIncrement: 1
-  alternateRule: 0
+  addCardRuleIncrement: -1
+  alternateRule: 1
   emptyAscendingRule: 0
   usesRules: 1
 --- !u!65 &823983789
@@ -753,6 +769,14 @@ Prefab:
       propertyPath: cardOffset.y
       value: -.899999976
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: addCardRuleIncrement
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: alternateRule
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
   m_RootGameObject: {fileID: 580591012}
@@ -801,6 +825,14 @@ Prefab:
       propertyPath: cardOffset.y
       value: -.899999976
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: addCardRuleIncrement
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: alternateRule
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
   m_RootGameObject: {fileID: 1130599960}
@@ -844,6 +876,10 @@ Prefab:
     - target: {fileID: 100000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
       propertyPath: m_Name
       value: Win
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: emptyAscendingRule
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
@@ -897,7 +933,7 @@ MonoBehaviour:
   addCardRuleIncrement: 1
   alternateRule: 0
   emptyAscendingRule: 0
-  usesRules: 1
+  usesRules: 0
 --- !u!65 &1044602426
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -957,7 +993,7 @@ MonoBehaviour:
   addCardRuleIncrement: 1
   alternateRule: 0
   emptyAscendingRule: 0
-  usesRules: 1
+  usesRules: 0
 --- !u!65 &1118145168
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1014,8 +1050,8 @@ MonoBehaviour:
   cardOffset: {x: 0, y: -.899999976, z: 0}
   cardPrefab: {fileID: 0}
   gameMgr: {fileID: 0}
-  addCardRuleIncrement: 1
-  alternateRule: 0
+  addCardRuleIncrement: -1
+  alternateRule: 1
   emptyAscendingRule: 0
   usesRules: 1
 --- !u!65 &1130599963
@@ -1074,8 +1110,8 @@ MonoBehaviour:
   cardOffset: {x: 0, y: -.899999976, z: 0}
   cardPrefab: {fileID: 0}
   gameMgr: {fileID: 0}
-  addCardRuleIncrement: 1
-  alternateRule: 0
+  addCardRuleIncrement: -1
+  alternateRule: 1
   emptyAscendingRule: 0
   usesRules: 1
 --- !u!65 &1146028649
@@ -1133,6 +1169,14 @@ Prefab:
       propertyPath: cardOffset.y
       value: -.899999976
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: addCardRuleIncrement
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: alternateRule
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
   m_RootGameObject: {fileID: 1846572582}
@@ -1181,6 +1225,14 @@ Prefab:
       propertyPath: cardOffset.y
       value: -.899999976
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: addCardRuleIncrement
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: alternateRule
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
   m_RootGameObject: {fileID: 1146028646}
@@ -1224,6 +1276,10 @@ Prefab:
     - target: {fileID: 100000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
       propertyPath: m_Name
       value: MoveDeck
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: usesRules
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
@@ -1277,7 +1333,7 @@ MonoBehaviour:
   addCardRuleIncrement: 1
   alternateRule: 0
   emptyAscendingRule: 0
-  usesRules: 1
+  usesRules: 0
 --- !u!65 &1391460911
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1329,6 +1385,10 @@ Prefab:
       propertyPath: m_Name
       value: Win
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: emptyAscendingRule
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
   m_RootGameObject: {fileID: 1644395122}
@@ -1372,6 +1432,10 @@ Prefab:
     - target: {fileID: 100000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
       propertyPath: m_Name
       value: Win
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: emptyAscendingRule
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
@@ -1451,7 +1515,7 @@ MonoBehaviour:
   gameMgr: {fileID: 0}
   addCardRuleIncrement: 1
   alternateRule: 0
-  emptyAscendingRule: 0
+  emptyAscendingRule: 1
   usesRules: 1
 --- !u!4 &1644395124
 Transform:
@@ -1520,8 +1584,8 @@ MonoBehaviour:
   cardOffset: {x: 0, y: -.899999976, z: 0}
   cardPrefab: {fileID: 0}
   gameMgr: {fileID: 0}
-  addCardRuleIncrement: 1
-  alternateRule: 0
+  addCardRuleIncrement: -1
+  alternateRule: 1
   emptyAscendingRule: 0
   usesRules: 1
 --- !u!65 &1846572585
@@ -1600,6 +1664,10 @@ Prefab:
       propertyPath: cardOffset.x
       value: .0199999996
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: usesRules
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
   m_RootGameObject: {fileID: 1391460908}
@@ -1649,8 +1717,8 @@ MonoBehaviour:
   cardOffset: {x: 0, y: -.899999976, z: 0}
   cardPrefab: {fileID: 0}
   gameMgr: {fileID: 0}
-  addCardRuleIncrement: 1
-  alternateRule: 0
+  addCardRuleIncrement: -1
+  alternateRule: 1
   emptyAscendingRule: 0
   usesRules: 1
 --- !u!65 &1994807332
@@ -1707,6 +1775,14 @@ Prefab:
     - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
       propertyPath: cardOffset.y
       value: -.899999976
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: addCardRuleIncrement
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: alternateRule
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
@@ -1810,6 +1886,14 @@ Prefab:
     - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
       propertyPath: cardOffset.y
       value: -.899999976
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: addCardRuleIncrement
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: alternateRule
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}

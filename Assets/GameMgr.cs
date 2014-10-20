@@ -18,6 +18,8 @@ public class GameMgr : MonoBehaviour {
 
 	private ArrayList allDecks = new ArrayList();
 
+	private double initialClickT = 0;
+
 	void Start () 
 	{
 		//todo: ensure this doesn't get ran twice, adding multiple on scene activation start() function
@@ -55,7 +57,7 @@ public class GameMgr : MonoBehaviour {
 	
 		if ( Input.GetMouseButtonDown(0) == true) //left clicked
 		{
-
+			initialClickT = Time.time;
 			lastMousePosition = Input.mousePosition;
 			//Vector2 ray = new Ray2D( lastMousePosition, 0 );
 			Vector3 worldPt = Camera.main.ScreenToWorldPoint( lastMousePosition);
@@ -81,6 +83,14 @@ public class GameMgr : MonoBehaviour {
 
 		if (Input.GetMouseButtonUp (0) == true)
 		{
+			if(Time.time - initialClickT < 0.3f) //if less than 0.3 seconds, tapped card, otherwise test for collision
+			{
+
+			}
+			else //card was actively dragged somewhere, place or revert to last
+			{
+
+			}
 			lastMousePosition = Vector3.zero;
 			cardMoving = null;
 			cardOffset = Vector3.zero;

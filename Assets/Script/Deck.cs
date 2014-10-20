@@ -124,6 +124,7 @@ public class Deck : MonoBehaviour {
 //		}
 //	}
 
+	//below is replaced by CanAdd, instead of interface I decided to use the IDE's properties, normally I'd implement a protocol
 	public bool isValidCard(Card card) //must be overridden (Convert to interface) or del  
 	{
 		return false;
@@ -147,6 +148,61 @@ public class Deck : MonoBehaviour {
 	public void addCardArrayAtIndex(ArrayList cards, int ind)
 	{
 		cardsArray.InsertRange(ind, cards); //todo, check for within bounds
+	}
+
+	public Card LastCardInDeck()
+	{
+		if(cardsArray.Count > 0) 
+		{
+			return cardsArray[cardsArray.Count - 1];
+		}
+		return null;
+	}
+
+
+	public bool CanAdd(Card card) //tests with rules to see if can add to current pile(s)
+	{
+		Card lastCard = this.LastCardInDeck();
+		if(lastCard == null) //empty
+		{
+			if(emptyAscendingRule == true) //winDeck, starts ace
+			{
+				if(card.Val == 1)
+				{
+					return true;
+				}
+			}
+			else 
+			{
+				if(card.Val == 13) //descending, returns true if King
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+		else
+		{
+			if(usesRules)
+			{
+				//bool ret = true; //easier to assume truth and prove false, than to test if true down the line
+
+				if(alternateRule && ( card.IsSuiteEven() != lastCard.IsSuiteEven() ) )
+				{
+					return false;
+				}
+				if( (lastCard.Val + addCardRuleIncrement) != card.Val)
+				{
+					return false;
+				}
+
+				return true;
+			}
+			else
+			{
+				return true;
+			}
+		}
 	}
 
 	public void Shuffle()
@@ -179,6 +235,8 @@ public class Deck : MonoBehaviour {
 		for(int i = 0; i < cardsArray.Count; i++)
 		{
 			tempCard = (Card)cardsArray[i];
+			tempCard.deck = this;
+
 			tempCard.spriteR.sortingOrder = i;
 			if(i == 0)
 			{
