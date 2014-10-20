@@ -142,7 +142,8 @@ public class Deck : MonoBehaviour {
 
 	public void addCardArray(ArrayList cards)
 	{
-		cardsArray.AddRange(cards); //todo, check for errors
+		ArrayList newList = new ArrayList(cards);
+		cardsArray.AddRange(newList); //todo, check for errors
 	}
 
 	public void addCardArrayAtIndex(ArrayList cards, int ind)
@@ -154,55 +155,67 @@ public class Deck : MonoBehaviour {
 	{
 		if(cardsArray.Count > 0) 
 		{
-			return cardsArray[cardsArray.Count - 1];
+			return cardsArray[cardsArray.Count - 1] as Card;
 		}
 		return null;
 	}
 
+	public ArrayList GetAndRemoveCardsAtIndex(int i)
+	{
+		ArrayList cards = this.GetCardsFromIndex (i);
+		this.RemoveCardsFromIndex ( i );
+		return cards;
+	}
+
+	public int IndexOf(Card c)
+	{
+		return cardsArray.IndexOf(c); //might fail if card isn't in, not worrying since only tested on decks with definite existence so far
+	}
 
 	public bool CanAdd(Card card) //tests with rules to see if can add to current pile(s)
 	{
-		Card lastCard = this.LastCardInDeck();
-		if(lastCard == null) //empty
-		{
-			if(emptyAscendingRule == true) //winDeck, starts ace
-			{
-				if(card.Val == 1)
-				{
-					return true;
-				}
-			}
-			else 
-			{
-				if(card.Val == 13) //descending, returns true if King
-				{
-					return true;
-				}
-			}
-			return false;
-		}
-		else
-		{
-			if(usesRules)
-			{
-				//bool ret = true; //easier to assume truth and prove false, than to test if true down the line
+		bool retVal = true;
 
-				if(alternateRule && ( card.IsSuiteEven() != lastCard.IsSuiteEven() ) )
+		if(card != null)
+		{
+			Card lastCard = this.LastCardInDeck();
+			if(lastCard == null) //empty
+			{
+				if(emptyAscendingRule == true) //winDeck, starts ace
 				{
-					return false;
+					if(card.Val != 1)
+					{
+						retVal = false;
+					}
 				}
-				if( (lastCard.Val + addCardRuleIncrement) != card.Val)
+				else 
 				{
-					return false;
+					if(card.Val != 13) //descending, returns true if King
+					{
+						retVal = false;
+					}
 				}
-
-				return true;
+				retVal = false;
 			}
 			else
 			{
-				return true;
+				if(usesRules)
+				{
+					//bool ret = true; //easier to assume truth and prove false, than to test if true down the line
+
+					if(alternateRule && ( card.IsSuiteEven() != lastCard.IsSuiteEven() ) )
+					{
+						retVal = false;
+					}
+					if( (lastCard.Val + addCardRuleIncrement) != card.Val)
+					{
+						retVal = false;
+					}
+				}
 			}
 		}
+		Debug.Log ("Retval is giving: " + retVal);
+		return retVal;
 	}
 
 	public void Shuffle()
@@ -246,7 +259,7 @@ public class Deck : MonoBehaviour {
 			else
 			{
 				tempCard.transform.parent = lastCard.transform;
-				tempCard.transform.localPosition = new Vector3(cardOffset.x, cardOffset.y, -i/30.0f);
+				tempCard.transform.localPosition = new Vector3(cardOffset.x, cardOffset.y, i/30.0f);
 			}
 
 			lastCard = tempCard;

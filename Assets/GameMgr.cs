@@ -19,6 +19,7 @@ public class GameMgr : MonoBehaviour {
 	private ArrayList allDecks = new ArrayList();
 
 	private double initialClickT = 0;
+	private Deck previousDeck = null;
 
 	void Start () 
 	{
@@ -53,8 +54,8 @@ public class GameMgr : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
+	void Update () 
+	{
 		if ( Input.GetMouseButtonDown(0) == true) //left clicked
 		{
 			initialClickT = Time.time;
@@ -73,6 +74,15 @@ public class GameMgr : MonoBehaviour {
 				{
 					cardMoving = temp.gameObject;
 					cardOffset = worldPt - cardMoving.transform.position;
+					previousDeck = temp.deck;
+					if(temp.deck == null)
+					{
+						Debug.Log ("Error, no deck to return card to, not set in Layout() function" );
+					}
+					int index = temp.deck.IndexOf (temp);
+
+					moveDeck.addCardArray( temp.deck.GetCardsFromIndex(index));
+					temp.deck.RemoveCardsFromIndex(index);
 				}
 			}
 		}
@@ -83,17 +93,85 @@ public class GameMgr : MonoBehaviour {
 
 		if (Input.GetMouseButtonUp (0) == true)
 		{
-			if(Time.time - initialClickT < 0.3f) //if less than 0.3 seconds, tapped card, otherwise test for collision
+			if(cardMoving != null) //otherwise clicked a button somewhere
 			{
+				bool wentToNewDeck = false;
 
-			}
-			else //card was actively dragged somewhere, place or revert to last
-			{
+				//cardMoving is the game object for purposes of motion, should rename
+				//Card movedCard = cardMoving.gameObject.GetComponent<Card>();
 
+				if(Time.time - initialClickT < 0.3f) //if less than 0.3 seconds, tapped card, otherwise test for collision
+				{
+					ArrayList possibleCards = new ArrayList();
+
+					Card tempCard = null;
+
+					foreach(Deck possibleDeck in winDeck) //testing possible moves, go for wins first
+					{
+						tempCard = possibleDeck.LastCardInDeck();
+						if(tempCard != null)
+						{
+							possibleCards.Add(tempCard);
+						}
+					}
+					foreach(Deck possibleDeck in tableauDeck)
+					{
+						tempCard = possibleDeck.LastCardInDeck();
+						if(tempCard != null)
+						{
+							possibleCards.Add(tempCard);
+						}
+					}
+
+					//remove the deck the card came from as a possible move-to. Debugging a weird issue otherwise would do this with less code at the moment
+					Card fromDeckCard = null;
+					foreach(Card c in possibleCards)
+					{
+						if( c.deck.Equals(previousDeck))
+						{
+							fromDeckCard = c;
+							break;
+						}
+					}
+					if(fromDeckCard != null)
+					{
+						possibleCards.Remove (fromDeckCard);
+					}
+
+					foreach(Card c in possibleCards)
+					{
+						if(c.deck.CanAdd( c ) == true ) //can add, remove from here and add to that deck.
+						{
+							c.deck.addCardArray ( moveDeck.GetCardsFromIndex(0));
+							moveDeck.RemoveEveryCard();
+							c.deck.LayoutDeck();
+							wentToNewDeck = true;
+							break;
+						}
+					}
+				}
+				else //card was actively dragged somewhere, place or revert to last
+				{
+
+				}
+
+				if(wentToNewDeck == false)
+				{
+					previousDeck.addCardArray ( moveDeck.GetCardsFromIndex(0));
+//					previousDeck.RemoveCardsFromIndex(0);
+					previousDeck.LayoutDeck();
+				}
+				else
+				{
+					//test for game win
+				}
+
+				lastMousePosition = Vector3.zero;
+				cardMoving = null;
+				cardOffset = Vector3.zero;
+				previousDeck = null;
+				initialClickT = 0.0f;
 			}
-			lastMousePosition = Vector3.zero;
-			cardMoving = null;
-			cardOffset = Vector3.zero;
 		}
 
 	}
@@ -101,14 +179,6 @@ public class GameMgr : MonoBehaviour {
 	public void RefreshGame()
 	{
 		dealDeck.addCardArray( this.GetAllCards());
-
-//		foreach(Card c in dealDeck.car)
-//		{
-//			if(c.frontFacing)
-//			{
-//				c.flip ();
-//			}
-//		}
 
 		int handSize = 0;
 		for(int i = 0; i < tableauDeck.Length; i++)
