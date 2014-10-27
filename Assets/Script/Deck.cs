@@ -84,7 +84,16 @@ public class Deck : MonoBehaviour {
 	//lots of todo's on ensuring i is within range everywhere on ArrayLists
 	public ArrayList GetCardsFromIndex(int i)
 	{
-		return cardsArray.GetRange(i, cardsArray.Count - i); //todo, try/catch, might go OOBounds.
+		if(cardsArray.Count > 0) 
+		{
+			return cardsArray.GetRange(i, cardsArray.Count - i); //todo, try/catch, might go OOBounds. 
+		}
+		else
+		{
+			Debug.Log("Getting Cards from Ind: 0, Error!");
+		}
+
+		return null;
 	}
 
 	public ArrayList GetAllCardsInDeck()
@@ -221,8 +230,15 @@ public class Deck : MonoBehaviour {
 
 	public void addCardArray(ArrayList cards)
 	{
-		ArrayList newList = new ArrayList(cards);
-		cardsArray.AddRange(newList); //todo, check for errors
+		if(cards != null)
+		{
+			ArrayList newList = new ArrayList(cards);
+			cardsArray.AddRange(newList); //todo, check for errors
+		}
+		else
+		{
+			Debug.Log ("Adding null array of cards!");
+		}
 	}
 
 	public void addCardArrayAtIndex(ArrayList cards, int ind)

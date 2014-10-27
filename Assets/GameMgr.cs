@@ -198,8 +198,8 @@ public class GameMgr : MonoBehaviour {
 								foreach(Deck d in possibleMoveDecksArray)
 								{
 									//distance = movedCard;
-
-									distance = Vector2.Distance(Deck.BoundsToScreenRect(movedCard.collider.bounds).center, d.lastBoundsWorldSpace().center);
+								
+									distance = Vector2.Distance(Deck.ColliderBoundsTo2DRect(movedCard.collider as BoxCollider).center, d.lastBoundsWorldSpace().center);
 									if(distance < 0)
 									{
 										distance *= -1; //make absolute value, not testing for left/right, just magnitude
