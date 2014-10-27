@@ -14,11 +14,16 @@ public class Card : MonoBehaviour {
 
 	public bool frontFacing = true;
 
-	private static Sprite bg = Resources.Load("cardraw/cardBackOriginal", typeof(Sprite)) as Sprite;
+	private static Sprite bg;
 	private Sprite foreground = null;
 
 	public void RefreshImage()
 	{
+		if (bg == null) //must load within game threads, strange.
+		{
+			bg = Resources.Load("cardraw/cardBackOriginal", typeof(Sprite)) as Sprite;
+		}
+
 		if(foreground == null) //more efficient, image stays in fg
 		{
 			string prefix = null;

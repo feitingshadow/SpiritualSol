@@ -9,6 +9,8 @@ public class GameMgr : MonoBehaviour {
 	private GameObject cardMoving = null;
 	private Vector3 cardOffset = Vector3.zero;
 
+	private float dragTime = 0.3f; //time it takes after clicking to be considered dragging the card
+	
 	public Deck dealDeck;
 	public Deck junkDeck;
 	public Deck[] tableauDeck;
@@ -17,9 +19,11 @@ public class GameMgr : MonoBehaviour {
 	// Use this for initialization
 
 	private ArrayList allDecks = new ArrayList();
-
+	private ArrayList allMoveableDecks = new ArrayList(); //All decks cards can move to, for ease of auto-moving
 	private double initialClickT = 0;
 	private Deck previousDeck = null;
+
+	public bool isDragging = false;
 
 	void Start () 
 	{
@@ -32,12 +36,14 @@ public class GameMgr : MonoBehaviour {
 			allDecks.Add (junkDeck);
 			foreach(Deck deck in tableauDeck)
 			{
+				allMoveableDecks.Add (deck);
 				allDecks.Add(deck);
 			}
 
 			foreach(Deck deck in winDeck)
 			{
 				allDecks.Add (deck);
+				allMoveableDecks.Add (deck);
 			}
 		}
 		else
@@ -89,6 +95,10 @@ public class GameMgr : MonoBehaviour {
 		if(cardMoving != null)
 		{ //todo: offset
 			cardMoving.transform.position = this.transformWithZ(Camera.main.ScreenToWorldPoint(Input.mousePosition) - cardOffset, cardMoving.transform.position.z);
+			if( isDragging == false && (Time.deltaTime - initialClickT) > dragTime)
+			{
+				isDragging = true;
+			}
 		}
 
 		if (Input.GetMouseButtonUp (0) == true)
@@ -100,7 +110,7 @@ public class GameMgr : MonoBehaviour {
 				//cardMoving is the game object for purposes of motion, should rename
 				Card movedCard = cardMoving.gameObject.GetComponent<Card>();
 
-				if(Time.time - initialClickT < 0.3f) //if less than 0.3 seconds, tapped card, otherwise test for collision
+				if(isDragging == false) //if less than 0.3 seconds, tapped card, otherwise test for collision
 				{
 					ArrayList possibleCards = new ArrayList();
 
@@ -152,13 +162,82 @@ public class GameMgr : MonoBehaviour {
 				}
 				else //card was actively dragged somewhere, place or revert to last
 				{
+					//card was dragged, find out what decks it is touching, and last cards in those decks.
+					ArrayList currentlyTouchedDecks = new ArrayList();
+					foreach(Deck deck in allMoveableDecks) //should have WinDecks first.
+					{
+						if( cardMoving.collider.bounds.Intersects( deck.lastBoundsWorldSpace() ) )
+						{
+							currentlyTouchedDecks.Add (deck);
+						}
+					}
+
+					//Got which cards are touching, now to see what you can move to.
+					if(currentlyTouchedDecks.Count > 0)
+					{
+						ArrayList possibleMoveDecksArray = new ArrayList();
+
+						foreach(Deck deck in currentlyTouchedDecks)
+						{
+							if( deck.CanAdd(movedCard) )
+							{
+								possibleMoveDecksArray.Add(deck);
+							}
+						}
+
+						//If more one is possible, move there, more than one, find closest deck and move there.
+
+						if(possibleMoveDecksArray.Count > 0)
+						{
+							if(possibleMoveDecksArray.Count > 1) // more than one touching
+							{
+								float minDistance = 9999.0f;
+								float distance = 9999.0f; // large distance
+								Deck closest = null;
+
+								foreach(Deck d in possibleMoveDecksArray)
+								{
+									//distance = movedCard;
+
+									distance = Vector2.Distance(Deck.BoundsToScreenRect(movedCard.collider.bounds).center, d.lastBoundsWorldSpace().center);
+									if(distance < 0)
+									{
+										distance *= -1; //make absolute value, not testing for left/right, just magnitude
+									}
+
+									if(distance < minDistance)
+									{
+										closest = d;
+									}
+								}
+								//closest deck has been found! add it
+
+								closest.addCard(movedCard);
+								if(closest == null)
+								{
+									Debug.Log("Error! closest card is null! After min calc");
+								}
+							}
+							else
+							{
+								Deck d = possibleMoveDecksArray[0] as Deck;
+								d.addCard(movedCard);
+								//auto removes from moveDeck at end of this
+							}
+							wentToNewDeck = true;
+						}
+					}
+
+
 					//wentToNewDeck = true; //just b/c for testing
 				}
+
+				//always remove cards from the moveDeck, not needed in if() statements.
+				moveDeck.RemoveCardsFromIndex(0);
 
 				if(wentToNewDeck == false)
 				{
 					previousDeck.addCardArray ( moveDeck.GetCardsFromIndex(0));
-					moveDeck.RemoveCardsFromIndex(0);
 //					previousDeck.RemoveCardsFromIndex(0);
 					previousDeck.LayoutDeck();
 				}
@@ -170,6 +249,7 @@ public class GameMgr : MonoBehaviour {
 				lastMousePosition = Vector3.zero;
 				cardMoving = null;
 				cardOffset = Vector3.zero;
+				isDragging = false;
 				previousDeck = null;
 				initialClickT = 0.0f;
 			}
