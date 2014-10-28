@@ -34,17 +34,19 @@ public class GameMgr : MonoBehaviour {
 			allDecks.Add (moveDeck);
 			allDecks.Add (dealDeck);
 			allDecks.Add (junkDeck);
-			foreach(Deck deck in tableauDeck)
-			{
-				allMoveableDecks.Add (deck);
-				allDecks.Add(deck);
-			}
 
 			foreach(Deck deck in winDeck)
 			{
 				allDecks.Add (deck);
 				allMoveableDecks.Add (deck);
 			}
+
+			foreach(Deck deck in tableauDeck)
+			{
+				allMoveableDecks.Add (deck);
+				allDecks.Add(deck);
+			}
+
 		}
 		else
 		{
@@ -62,7 +64,7 @@ public class GameMgr : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		if ( Input.GetMouseButtonDown(0) == true) //left clicked
+		if ( Input.GetMouseButtonDown(0) == true && cardMoving == null) //left clicked
 		{
 			initialClickT = Time.time;
 			lastMousePosition = Input.mousePosition;
@@ -166,7 +168,7 @@ public class GameMgr : MonoBehaviour {
 					ArrayList currentlyTouchedDecks = new ArrayList();
 					foreach(Deck deck in allMoveableDecks) //should have WinDecks first.
 					{
-						if( cardMoving.collider.bounds.Intersects( deck.lastBoundsWorldSpace() ) )
+						if( Deck.RectsIntersect( Deck.ColliderBoundsTo2DRect(deck.LastCardInDeck().collider as BoxCollider), Deck.ColliderBoundsTo2DRect(movedCard.collider as BoxCollider) ) )
 						{
 							currentlyTouchedDecks.Add (deck);
 						}
@@ -233,7 +235,8 @@ public class GameMgr : MonoBehaviour {
 				}
 
 				//always remove cards from the moveDeck, not needed in if() statements.
-				moveDeck.RemoveCardsFromIndex(0);
+
+				layoutAllDecks();
 
 				if(wentToNewDeck == false)
 				{
@@ -247,6 +250,7 @@ public class GameMgr : MonoBehaviour {
 				}
 
 				lastMousePosition = Vector3.zero;
+				moveDeck.RemoveCardsFromIndex(0);
 				cardMoving = null;
 				cardOffset = Vector3.zero;
 				isDragging = false;
@@ -304,7 +308,13 @@ public class GameMgr : MonoBehaviour {
 		return new Vector3(inTransform.x, inTransform.y, desiredZ);	                  
 	}
 
-
+	public void layoutAllDecks()
+	{
+		foreach(Deck d in allDecks)
+		{
+			d.LayoutDeck();
+		}
+	}
 
 
 

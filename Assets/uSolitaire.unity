@@ -117,6 +117,10 @@ Prefab:
       propertyPath: emptyAscendingRule
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: numFaceUp
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
   m_RootGameObject: {fileID: 534897837}
@@ -170,6 +174,7 @@ MonoBehaviour:
   alternateRule: 1
   emptyAscendingRule: 0
   usesRules: 1
+  numFaceUp: 1
 --- !u!65 &236005203
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -230,6 +235,7 @@ MonoBehaviour:
   alternateRule: 0
   emptyAscendingRule: 1
   usesRules: 1
+  numFaceUp: 12
 --- !u!65 &321384498
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -370,6 +376,7 @@ MonoBehaviour:
   alternateRule: 0
   emptyAscendingRule: 1
   usesRules: 1
+  numFaceUp: 12
 --- !u!65 &516259510
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -430,6 +437,7 @@ MonoBehaviour:
   alternateRule: 0
   emptyAscendingRule: 1
   usesRules: 1
+  numFaceUp: 12
 --- !u!65 &534897840
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -538,6 +546,7 @@ MonoBehaviour:
   alternateRule: 1
   emptyAscendingRule: 0
   usesRules: 1
+  numFaceUp: 1
 --- !u!65 &580591015
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -610,6 +619,7 @@ MonoBehaviour:
   alternateRule: 0
   emptyAscendingRule: 0
   usesRules: 1
+  numFaceUp: 0
 --- !u!1001 &778762919
 Prefab:
   m_ObjectHideFlags: 0
@@ -659,6 +669,14 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
       propertyPath: alternateRule
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: numFaceUp
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: usesRules
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -714,6 +732,7 @@ MonoBehaviour:
   alternateRule: 1
   emptyAscendingRule: 0
   usesRules: 1
+  numFaceUp: 1
 --- !u!65 &823983789
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -777,6 +796,14 @@ Prefab:
       propertyPath: alternateRule
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: numFaceUp
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: usesRules
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
   m_RootGameObject: {fileID: 580591012}
@@ -833,6 +860,14 @@ Prefab:
       propertyPath: alternateRule
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: numFaceUp
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: usesRules
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
   m_RootGameObject: {fileID: 1130599960}
@@ -880,6 +915,10 @@ Prefab:
     - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
       propertyPath: emptyAscendingRule
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: numFaceUp
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
@@ -934,6 +973,7 @@ MonoBehaviour:
   alternateRule: 0
   emptyAscendingRule: 0
   usesRules: 0
+  numFaceUp: 52
 --- !u!65 &1044602426
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -994,6 +1034,7 @@ MonoBehaviour:
   alternateRule: 0
   emptyAscendingRule: 0
   usesRules: 0
+  numFaceUp: 0
 --- !u!65 &1118145168
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1054,6 +1095,7 @@ MonoBehaviour:
   alternateRule: 1
   emptyAscendingRule: 0
   usesRules: 1
+  numFaceUp: 1
 --- !u!65 &1130599963
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1114,6 +1156,7 @@ MonoBehaviour:
   alternateRule: 1
   emptyAscendingRule: 0
   usesRules: 1
+  numFaceUp: 1
 --- !u!65 &1146028649
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1177,6 +1220,14 @@ Prefab:
       propertyPath: alternateRule
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: numFaceUp
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: usesRules
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
   m_RootGameObject: {fileID: 1846572582}
@@ -1233,6 +1284,14 @@ Prefab:
       propertyPath: alternateRule
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: numFaceUp
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: usesRules
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
   m_RootGameObject: {fileID: 1146028646}
@@ -1280,6 +1339,10 @@ Prefab:
     - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
       propertyPath: usesRules
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: numFaceUp
+      value: 52
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
@@ -1334,6 +1397,7 @@ MonoBehaviour:
   alternateRule: 0
   emptyAscendingRule: 0
   usesRules: 0
+  numFaceUp: 0
 --- !u!65 &1391460911
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1389,6 +1453,10 @@ Prefab:
       propertyPath: emptyAscendingRule
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: numFaceUp
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
   m_RootGameObject: {fileID: 1644395122}
@@ -1436,6 +1504,10 @@ Prefab:
     - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
       propertyPath: emptyAscendingRule
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: numFaceUp
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
@@ -1517,6 +1589,7 @@ MonoBehaviour:
   alternateRule: 0
   emptyAscendingRule: 1
   usesRules: 1
+  numFaceUp: 12
 --- !u!4 &1644395124
 Transform:
   m_ObjectHideFlags: 0
@@ -1588,6 +1661,7 @@ MonoBehaviour:
   alternateRule: 1
   emptyAscendingRule: 0
   usesRules: 1
+  numFaceUp: 1
 --- !u!65 &1846572585
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1721,6 +1795,7 @@ MonoBehaviour:
   alternateRule: 1
   emptyAscendingRule: 0
   usesRules: 1
+  numFaceUp: 1
 --- !u!65 &1994807332
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1784,6 +1859,14 @@ Prefab:
       propertyPath: alternateRule
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: numFaceUp
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: usesRules
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
   m_RootGameObject: {fileID: 236005200}
@@ -1844,6 +1927,7 @@ MonoBehaviour:
   - {fileID: 1644395123}
   - {fileID: 516259509}
   moveDeck: {fileID: 1044602425}
+  isDragging: 0
 --- !u!1001 &2120913449
 Prefab:
   m_ObjectHideFlags: 0
@@ -1893,6 +1977,14 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
       propertyPath: alternateRule
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: numFaceUp
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: usesRules
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

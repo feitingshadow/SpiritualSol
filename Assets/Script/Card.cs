@@ -100,6 +100,7 @@ public class Card : MonoBehaviour {
 	public void flip()
 	{
 		frontFacing = !frontFacing;
+		collider.enabled = frontFacing;
 		doCardDisplay();
 	}
 

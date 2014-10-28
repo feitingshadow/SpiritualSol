@@ -26,6 +26,9 @@ public class Deck : MonoBehaviour {
 	public bool alternateRule; //does the color have to change or stay same
 	public bool emptyAscendingRule; // Win piles ascend, so yes. Tableaus must start with King, they go downward
 	public bool usesRules = true; //the deck won't use rules, it just gets added to. 
+
+	public int numFaceUp = 0; //last few cards faceUp, 3 for klondike 3 on deck. 1 for tableau
+
 	// Use this for initialization
 	void Awake () 
 	{
@@ -84,6 +87,13 @@ public class Deck : MonoBehaviour {
 	//lots of todo's on ensuring i is within range everywhere on ArrayLists
 	public ArrayList GetCardsFromIndex(int i)
 	{
+		if(i < 0)
+		{
+			//int ad = 3;
+		//	ad = 5;
+		}
+		//Debug.Log("Getting Cards from Ind: " + i + "With Count: " + cardsArray.Count);
+
 		if(cardsArray.Count > 0) 
 		{
 			return cardsArray.GetRange(i, cardsArray.Count - i); //todo, try/catch, might go OOBounds. 
@@ -125,26 +135,7 @@ public class Deck : MonoBehaviour {
 		cardsArray.Clear (); 
 	}
 
-//	public void layoutCards()
-//	{
-//		//physically attach cards
-//		if(firstCard != null)
-//		{
-//			firstCard.gameObject.transform.position = this.transform.position;
-//			Card tempCard = firstCard.next;
-//
-//			//Todo: Deck position never changes, so create a static Transform instead of using getter through this.tran.pos...
-//			Vector3 pos = new Vector3( this.transform.position.x, this.transform.position.y, this.transform.position.z);
-//
-//			while (tempCard.next != null)
-//			{
-//				tempCard = tempCard.next;
-//				pos = new Vector3(pos.x + laidCardOffset.x, pos.y + laidCardOffset.y, pos.z);
-//				tempCard.transform.position = pos;
-//			}
-//		}
-//	}
-
+	//Todo: make local
 	public static Rect ColliderBoundsTo2DRect(BoxCollider collider)
 	{ 
 
@@ -165,7 +156,7 @@ public class Deck : MonoBehaviour {
 	}
 
 	//Todo: move all these geo helper functions to common area
-	public bool RectsIntersect(Rect r1, Rect r2)
+	public static bool RectsIntersect(Rect r1, Rect r2)
 	{
 		float right1 = r1.x + r1.width;
 		float right2 = r2.x + r2.width;
@@ -255,12 +246,12 @@ public class Deck : MonoBehaviour {
 		return null;
 	}
 
-	public ArrayList GetAndRemoveCardsAtIndex(int i)
-	{
-		ArrayList cards = this.GetCardsFromIndex (i);
-		this.RemoveCardsFromIndex ( i );
-		return cards;
-	}
+//	public ArrayList GetAndRemoveCardsAtIndex(int i)
+//	{
+//		ArrayList cards = this.GetCardsFromIndex (i);
+//		this.RemoveCardsFromIndex ( i );
+//		return cards;
+//	}
 
 	public int IndexOf(Card c)
 	{
@@ -336,6 +327,16 @@ public class Deck : MonoBehaviour {
 		this.LayoutDeck();
 	}
 
+	public void flipAllCards(bool frontFacing)
+	{
+		foreach(Card c in cardsArray)
+		{
+			if(c.frontFacing != frontFacing)
+			{
+				c.flip();
+			}
+		}
+	}
 
 	public void LayoutDeck()
 	{
@@ -356,6 +357,14 @@ public class Deck : MonoBehaviour {
 			{
 				tempCard.transform.parent = lastCard.transform;
 				tempCard.transform.localPosition = new Vector3(cardOffset.x, cardOffset.y, i/30.0f);
+			}
+
+			if(i >= (cardsArray.Count - numFaceUp))
+			{
+				if(tempCard.frontFacing == false)
+				{
+					tempCard.flip();
+				}
 			}
 
 			lastCard = tempCard;
