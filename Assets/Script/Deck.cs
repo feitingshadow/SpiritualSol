@@ -84,6 +84,19 @@ public class Deck : MonoBehaviour {
 	
 	}
 
+	//return the last bounding box, which is the card on top, or the deck itself if empty. To help test collision when deck is empty.
+	public BoxCollider lastCollider()
+	{ //Assumes deck has BoxCollider
+		if(cardsArray.Count > 0)
+		{
+			return LastCardInDeck().collider as BoxCollider;
+		}
+		else
+		{
+			return this.collider as BoxCollider;
+		}
+	}
+
 	//lots of todo's on ensuring i is within range everywhere on ArrayLists
 	public ArrayList GetCardsFromIndex(int i)
 	{

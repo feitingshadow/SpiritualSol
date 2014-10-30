@@ -97,7 +97,7 @@ public class GameMgr : MonoBehaviour {
 		if(cardMoving != null)
 		{ //todo: offset
 			cardMoving.transform.position = this.transformWithZ(Camera.main.ScreenToWorldPoint(Input.mousePosition) - cardOffset, cardMoving.transform.position.z);
-			if( isDragging == false && (Time.deltaTime - initialClickT) > dragTime)
+			if( isDragging == false && (Time.time - initialClickT) > dragTime)
 			{
 				isDragging = true;
 			}
@@ -168,7 +168,7 @@ public class GameMgr : MonoBehaviour {
 					ArrayList currentlyTouchedDecks = new ArrayList();
 					foreach(Deck deck in allMoveableDecks) //should have WinDecks first.
 					{
-						if( Deck.RectsIntersect( Deck.ColliderBoundsTo2DRect(deck.LastCardInDeck().collider as BoxCollider), Deck.ColliderBoundsTo2DRect(movedCard.collider as BoxCollider) ) )
+						if( Deck.RectsIntersect( Deck.ColliderBoundsTo2DRect(deck.lastCollider()), Deck.ColliderBoundsTo2DRect(movedCard.collider as BoxCollider) ) )
 						{
 							currentlyTouchedDecks.Add (deck);
 						}
@@ -236,7 +236,6 @@ public class GameMgr : MonoBehaviour {
 
 				//always remove cards from the moveDeck, not needed in if() statements.
 
-				layoutAllDecks();
 
 				if(wentToNewDeck == false)
 				{
@@ -251,6 +250,8 @@ public class GameMgr : MonoBehaviour {
 
 				lastMousePosition = Vector3.zero;
 				moveDeck.RemoveCardsFromIndex(0);
+				layoutAllDecks();
+
 				cardMoving = null;
 				cardOffset = Vector3.zero;
 				isDragging = false;
