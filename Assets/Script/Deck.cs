@@ -360,7 +360,7 @@ public class Deck : MonoBehaviour {
 			tempCard = (Card)cardsArray[i];
 			tempCard.deck = this;
 
-			tempCard.spriteR.sortingOrder = i;
+			//tempCard.spriteR.sortingOrder = i; //unused for 3D renders
 			if(i == 0)
 			{
 				tempCard.transform.parent = this.transform;
@@ -369,7 +369,7 @@ public class Deck : MonoBehaviour {
 			else
 			{
 				tempCard.transform.parent = lastCard.transform;
-				tempCard.transform.localPosition = new Vector3(cardOffset.x, cardOffset.y, i/30.0f);
+				tempCard.transform.localPosition = new Vector3(cardOffset.x, cardOffset.y, -i/30.0f);
 			}
 
 			if(i >= (cardsArray.Count - numFaceUp))

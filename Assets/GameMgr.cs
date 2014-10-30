@@ -96,7 +96,7 @@ public class GameMgr : MonoBehaviour {
 		}
 		if(cardMoving != null)
 		{ //todo: offset
-			cardMoving.transform.position = this.transformWithZ(Camera.main.ScreenToWorldPoint(Input.mousePosition) - cardOffset, cardMoving.transform.position.z);
+			cardMoving.transform.position = this.transformWithZ(Camera.main.ScreenToWorldPoint(Input.mousePosition) - cardOffset, moveDeck.transform.position.z);
 			if( isDragging == false && (Time.time - initialClickT) > dragTime)
 			{
 				isDragging = true;
