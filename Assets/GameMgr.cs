@@ -118,45 +118,49 @@ public class GameMgr : MonoBehaviour {
 
 					Card tempCard = null;
 
-					foreach(Deck possibleDeck in winDeck) //testing possible moves, go for wins first
-					{
-						tempCard = possibleDeck.LastCardInDeck();
-						if(tempCard != null)
-						{
-							possibleCards.Add(tempCard);
-						}
-					}
-					foreach(Deck possibleDeck in tableauDeck)
-					{
-						tempCard = possibleDeck.LastCardInDeck();
-						if(tempCard != null)
-						{
-							possibleCards.Add(tempCard);
-						}
-					}
+//					foreach(Deck possibleDeck in winDeck) //testing possible moves, go for wins first
+//					{
+//						tempCard = possibleDeck.LastCardInDeck();
+//						if(tempCard != null)
+//						{
+//							possibleCards.Add(tempCard);
+//						}
+//					}
+//					foreach(Deck possibleDeck in tableauDeck)
+//					{
+//						tempCard = possibleDeck.LastCardInDeck();
+//						if(tempCard != null)
+//						{
+//							possibleCards.Add(tempCard);
+//						}
+//					}
 
 					//remove the deck the card came from as a possible move-to. Debugging a weird issue otherwise would do this with less code at the moment
-					Card fromDeckCard = null;
-					foreach(Card c in possibleCards)
-					{
-						if( c.deck.Equals(previousDeck))
-						{
-							fromDeckCard = c;
-							break;
-						}
-					}
-					if(fromDeckCard != null)
-					{
-						possibleCards.Remove (fromDeckCard);
-					}
+//					Card fromDeckCard = null;
+//					foreach(Deck d in allMoveableDecks)
+//					{
+//						if( d.Equals(previousDeck))
+//						{
+//							fromDeckCard = c;
+//							break;
+//						}
+//					}
+//					if(fromDeckCard != null)
+//					{
+//						possibleCards.Remove (fromDeckCard);
+//					}
 
-					foreach(Card c in possibleCards)
+					foreach(Deck d in allMoveableDecks)
 					{
-						if(c.deck.CanAdd( movedCard ) == true ) //can add, remove from here and add to that deck.
+						if(d == previousDeck) //todo: card deck property isn't used
+						{ //don't move to where I was
+							continue;
+						}
+						if(d.CanAdd( movedCard ) == true ) //can add, remove from here and add to that deck.
 						{
-							c.deck.addCardArray ( moveDeck.GetCardsFromIndex(0));
+							d.addCardArray ( moveDeck.GetCardsFromIndex(0));
 							moveDeck.RemoveEveryCard();
-							c.deck.LayoutDeck();
+							//d.LayoutDeck();
 							wentToNewDeck = true;
 							break;
 						}

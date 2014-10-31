@@ -25,6 +25,7 @@ public class Deck : MonoBehaviour {
 	public int addCardRuleIncrement = 1; //winpiles and tableau uses, -1 and 1 respective
 	public bool alternateRule; //does the color have to change or stay same
 	public bool emptyAscendingRule; // Win piles ascend, so yes. Tableaus must start with King, they go downward
+	public bool sameSuiteRule; //must be same Suite, like for Win Pile
 	public bool usesRules = true; //the deck won't use rules, it just gets added to. 
 
 	public int numFaceUp = 0; //last few cards faceUp, 3 for klondike 3 on deck. 1 for tableau
@@ -280,11 +281,24 @@ public class Deck : MonoBehaviour {
 			Card lastCard = this.LastCardInDeck();
 			if(lastCard == null) //empty
 			{
-				if(emptyAscendingRule == true) //winDeck, starts ace
+				if(emptyAscendingRule == true) //winDeck, starts ace. //Can't add more than 1 card, stacks prohibited. Stacks always have alternating color
 				{
 					if(card.Val != 1)
 					{
 						retVal = false;
+					}
+					if(card.transform.childCount > 0) //The only child of a card is another card.
+					{ //note, this logic will have to change if we use deck arrays instead of parenting to cards.
+						Card child = card.transform.GetChild(0).gameObject.GetComponent<Card>() as Card;
+						while(child != null)
+						{
+							if( child.Suite != card.Suite && child.Val != card.Val + 1) //can move from winDeck to winDeck. Nothing else
+							{
+								retVal = false; 
+								break;
+							}
+							child = child.transform.GetChild(0).gameObject.GetComponent<Card>() as Card; // next card.
+						}  
 					}
 				}
 				else 
@@ -294,18 +308,36 @@ public class Deck : MonoBehaviour {
 						retVal = false;
 					}
 				}
-				retVal = false;
+				
 			}
 			else
 			{
 				if(usesRules)
 				{
 					//bool ret = true; //easier to assume truth and prove false, than to test if true down the line
-
-					if(alternateRule == true && ( card.IsSuiteEven() == lastCard.IsSuiteEven() ) )
+					if(sameSuiteRule == true)
 					{
-						retVal = false;
+						if(card.Suite != lastCard.Suite)
+						{
+							return false;
+						}
 					}
+
+					if(alternateRule == true) //tableau
+					{
+						if ( card.IsSuiteEven() == lastCard.IsSuiteEven() ) //Can collapse this logic, keeping separate for readability
+						{
+							retVal = false;
+						}
+					}
+					else //Win Deck
+					{
+						if ( card.IsSuiteEven() != lastCard.IsSuiteEven() ) 
+						{
+							retVal = false;
+						}
+					}
+
 					Debug.Log ("Testing addable val: " + card.Val + " against Last: " + lastCard.Val + " Increment v: " + addCardRuleIncrement);
 					if( (lastCard.Val + addCardRuleIncrement) != card.Val)
 					{
