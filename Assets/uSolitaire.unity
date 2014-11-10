@@ -471,7 +471,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 3.23914289
+      value: 59.5328484
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
       propertyPath: m_LocalPosition.z
@@ -597,6 +597,7 @@ Transform:
   - {fileID: 1391460909}
   - {fileID: 1118145166}
   - {fileID: 1044602424}
+  - {fileID: 887139810}
   - {fileID: 823983787}
   - {fileID: 580591013}
   - {fileID: 1130599961}
@@ -756,6 +757,68 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.26999998, y: 6.28000021, z: 1}
   m_Center: {x: 0, y: 0, z: -250}
+--- !u!1 &887139809
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+  m_PrefabInternal: {fileID: 1725888714}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 887139810}
+  - 114: {fileID: 887139812}
+  - 65: {fileID: 887139811}
+  m_Layer: 0
+  m_Name: Play
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &887139810
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+  m_PrefabInternal: {fileID: 1725888714}
+  m_GameObject: {fileID: 887139809}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.1058526, y: 4.32777548, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 621552512}
+--- !u!65 &887139811
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 887139809}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.26999998, y: 6.28000021, z: 1}
+  m_Center: {x: 0, y: 0, z: -250}
+--- !u!114 &887139812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101,
+    type: 2}
+  m_PrefabInternal: {fileID: 1725888714}
+  m_GameObject: {fileID: 887139809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48b994155dd5b6246b7bf396b3760758, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startDecks: 0
+  cardOffset: {x: .0879999995, y: -0, z: 0}
+  cardPrefab: {fileID: 11400000, guid: 21fc1043b79d41e4081e04d5ae36946b, type: 2}
+  gameMgr: {fileID: 2009931658}
+  addCardRuleIncrement: 1
+  alternateRule: 0
+  emptyAscendingRule: 0
+  sameSuiteRule: 0
+  usesRules: 0
+  numFaceUp: 3
 --- !u!1001 &898140173
 Prefab:
   m_ObjectHideFlags: 0
@@ -1026,7 +1089,7 @@ Transform:
   m_PrefabInternal: {fileID: 563721186}
   m_GameObject: {fileID: 1118145165}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.91762209, y: 3.23914289, z: 0}
+  m_LocalPosition: {x: -4.91762209, y: 59.5328484, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 621552512}
@@ -1429,7 +1492,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 4.26999998, y: 6.28000021, z: 1}
-  m_Center: {x: 0, y: 0, z: -250}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1420495930
 Prefab:
   m_ObjectHideFlags: 0
@@ -1642,6 +1705,87 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.26999998, y: 6.28000021, z: 1}
   m_Center: {x: 0, y: 0, z: -250}
+--- !u!1001 &1725888714
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 621552512}
+    m_Modifications:
+    - target: {fileID: 400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -5.1058526
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 4.32777548
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: m_Name
+      value: Play
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: startDecks
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: cardPrefab
+      value: 
+      objectReference: {fileID: 11400000, guid: 21fc1043b79d41e4081e04d5ae36946b,
+        type: 2}
+    - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: laidCardOffset.y
+      value: -.330000013
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: cardOffset.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: gameMgr
+      value: 
+      objectReference: {fileID: 2009931658}
+    - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: cardOffset.x
+      value: .0879999995
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: usesRules
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: numFaceUp
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+      propertyPath: emptyAscendingRule
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: a0c4a0b90d11cb84f8a4dea8448e8101, type: 2}
+  m_RootGameObject: {fileID: 887139809}
+  m_IsPrefabParent: 0
+  m_IsExploded: 1
 --- !u!1 &1846572582
 GameObject:
   m_ObjectHideFlags: 0
@@ -1958,6 +2102,7 @@ MonoBehaviour:
   - {fileID: 1644395123}
   - {fileID: 516259509}
   moveDeck: {fileID: 1044602425}
+  playDeck: {fileID: 887139812}
   isDragging: 0
 --- !u!1001 &2120913449
 Prefab:

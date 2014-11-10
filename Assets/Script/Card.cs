@@ -97,6 +97,14 @@ public class Card : MonoBehaviour {
 
 	}
 
+	public void flipBackward()
+	{
+		if(frontFacing == true)
+		{
+			this.flip ();
+		}
+	}
+
 	public void flip()
 	{
 		frontFacing = !frontFacing;

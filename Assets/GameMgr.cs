@@ -3,19 +3,22 @@ using System.Collections;
 
 public class GameMgr : MonoBehaviour {
 
-
+	//CONSTANTS
+	const int TOTAL_CARDS_IN_SUITE = 13;
 
 	private Vector3 lastMousePosition = Vector3.zero;
 	private GameObject cardMoving = null;
 	private Vector3 cardOffset = Vector3.zero;
 
 	private float dragTime = 0.3f; //time it takes after clicking to be considered dragging the card
-	
+	private bool buttonDown = false;
+
 	public Deck dealDeck;
 	public Deck junkDeck;
 	public Deck[] tableauDeck;
 	public Deck[] winDeck;
 	public Deck moveDeck;
+	public Deck playDeck;
 	// Use this for initialization
 
 	private ArrayList allDecks = new ArrayList();
@@ -31,6 +34,7 @@ public class GameMgr : MonoBehaviour {
 		if(allDecks.Count == 0) //might work good enough
 		{
 			Debug.Log ("All decks being added to");
+			allDecks.Add(playDeck);
 			allDecks.Add (moveDeck);
 			allDecks.Add (dealDeck);
 			allDecks.Add (junkDeck);
@@ -76,6 +80,8 @@ public class GameMgr : MonoBehaviour {
 
 			if(Physics.Raycast(ray, out hit) && hit.collider != null)
 			{
+				Deck collidedObj = hit.collider.gameObject.GetComponent<Deck>();
+
 				Card temp = hit.collider.gameObject.GetComponent<Card>();
 				//temp = temp.GetComponent<Card>() as Card; //ensure it's a card
 				if(temp != null)
@@ -92,6 +98,27 @@ public class GameMgr : MonoBehaviour {
 					moveDeck.addCardArray( temp.deck.GetCardsFromIndex(index));
 					temp.deck.RemoveCardsFromIndex(index);
 				}
+
+				//this is called while the mouse is down, test to see if the mouse was let up as well...
+				//gate with bool, testing.
+				if( buttonDown == false && collidedObj == dealDeck)
+				{
+					buttonDown = true;
+
+					if(dealDeck.CardCount() == 0)
+					{
+						if (playDeck.CardCount() > 0)
+						{
+							this.MoveCardsFromIndexInDeckToIndexInDeck( 0, playDeck, 0, dealDeck);
+							this.dealDeck.ReverseOrder();
+							this.dealDeck.LayoutDeck(true);
+						}
+					}
+					else
+					{
+						this.DealCardsToPlayDeck(1); //add setting to change this value other than 1 eventually.
+					}
+				}
 			}
 		}
 		if(cardMoving != null)
@@ -105,6 +132,8 @@ public class GameMgr : MonoBehaviour {
 
 		if (Input.GetMouseButtonUp (0) == true)
 		{
+			buttonDown = false;
+
 			if(cardMoving != null) //otherwise clicked a button somewhere
 			{
 				bool wentToNewDeck = false;
@@ -114,57 +143,34 @@ public class GameMgr : MonoBehaviour {
 
 				if(isDragging == false) //if less than 0.3 seconds, tapped card, otherwise test for collision
 				{
-					ArrayList possibleCards = new ArrayList();
-
-					Card tempCard = null;
-
-//					foreach(Deck possibleDeck in winDeck) //testing possible moves, go for wins first
-//					{
-//						tempCard = possibleDeck.LastCardInDeck();
-//						if(tempCard != null)
-//						{
-//							possibleCards.Add(tempCard);
-//						}
-//					}
-//					foreach(Deck possibleDeck in tableauDeck)
-//					{
-//						tempCard = possibleDeck.LastCardInDeck();
-//						if(tempCard != null)
-//						{
-//							possibleCards.Add(tempCard);
-//						}
-//					}
-
-					//remove the deck the card came from as a possible move-to. Debugging a weird issue otherwise would do this with less code at the moment
-//					Card fromDeckCard = null;
-//					foreach(Deck d in allMoveableDecks)
-//					{
-//						if( d.Equals(previousDeck))
-//						{
-//							fromDeckCard = c;
-//							break;
-//						}
-//					}
-//					if(fromDeckCard != null)
-//					{
-//						possibleCards.Remove (fromDeckCard);
-//					}
-
-					foreach(Deck d in allMoveableDecks)
+					//ensure win Deck is tested before tableau, had a bug with initial ordering
+					ArrayList possibleDecks = new ArrayList();
+					foreach(Deck deck in winDeck)
 					{
-						if(d == previousDeck) //todo: card deck property isn't used
+						possibleDecks.Add(deck);
+					}
+					foreach(Deck deck in tableauDeck)
+					{
+						possibleDecks.Add(deck);
+						
+					}
+
+					foreach(Deck deck in possibleDecks)
+					{
+						if(deck == previousDeck) //todo: card deck property isn't used
 						{ //don't move to where I was
 							continue;
 						}
-						if(d.CanAdd( movedCard ) == true ) //can add, remove from here and add to that deck.
+						if( deck.CanAdd(movedCard) ) 
 						{
-							d.addCardArray ( moveDeck.GetCardsFromIndex(0));
+							deck.addCardArray ( moveDeck.GetCardsFromIndex(0));
 							moveDeck.RemoveEveryCard();
 							//d.LayoutDeck();
 							wentToNewDeck = true;
 							break;
 						}
 					}
+
 				}
 				else //card was actively dragged somewhere, place or revert to last
 				{
@@ -249,7 +255,7 @@ public class GameMgr : MonoBehaviour {
 				}
 				else
 				{
-					//test for game win
+					this.TestWin();
 				}
 
 				lastMousePosition = Vector3.zero;
@@ -281,7 +287,7 @@ public class GameMgr : MonoBehaviour {
 			tableauDeck[i].faceCardsWithRange(handSize - 1, handSize - 1, true); //front face the card
 		}
 
-		dealDeck.LayoutDeck();
+		dealDeck.LayoutDeck(true);
 	}
 
 	public ArrayList GetAllCards()
@@ -289,7 +295,7 @@ public class GameMgr : MonoBehaviour {
 		ArrayList everyCard = new ArrayList();
 		foreach(Deck tempD in allDecks)
 		{
-			Debug.Log ("temp count: " + tempD.CardCount());
+//			Debug.Log ("temp count: " + tempD.CardCount());
 			everyCard.AddRange (tempD.GetAllCardsInDeck());
 
 			tempD.RemoveCardsFromIndex(0); //all cards in deck
@@ -321,6 +327,33 @@ public class GameMgr : MonoBehaviour {
 		}
 	}
 
+	public void TestWin()
+	{
+		foreach(Deck d in winDeck)
+		{
+			if(d.CardCount() < TOTAL_CARDS_IN_SUITE )
+			{
+				return; //no win.
+			}
+		} //win if past this
+
+		Debug.Log ("Winner!");
+	}
+
+	public void DealCardsToPlayDeck(int number)
+	{
+		int cardCount = dealDeck.CardCount();
+		if(cardCount > 0)
+		{
+			if (number > cardCount)
+			{
+				number = cardCount; //prep for more than draw 1 card
+			}
+
+			this.MoveCardsFromIndexInDeckToIndexInDeck( dealDeck.CardCount() - number, dealDeck, playDeck.CardCount()-1, playDeck);
+			this.playDeck.LayoutDeck();
+		}
+	}
 
 
 

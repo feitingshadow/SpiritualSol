@@ -383,7 +383,12 @@ public class Deck : MonoBehaviour {
 		}
 	}
 
-	public void LayoutDeck()
+	public void ReverseOrder()
+	{
+		this.cardsArray.Reverse();
+	}
+
+	public void LayoutDeck(bool initialLayout)
 	{
 		Card tempCard = null;
 		Card lastCard = null;
@@ -391,7 +396,7 @@ public class Deck : MonoBehaviour {
 		{
 			tempCard = (Card)cardsArray[i];
 			tempCard.deck = this;
-
+			
 			//tempCard.spriteR.sortingOrder = i; //unused for 3D renders
 			if(i == 0)
 			{
@@ -403,7 +408,7 @@ public class Deck : MonoBehaviour {
 				tempCard.transform.parent = lastCard.transform;
 				tempCard.transform.localPosition = new Vector3(cardOffset.x, cardOffset.y, -i/30.0f);
 			}
-
+			
 			if(i >= (cardsArray.Count - numFaceUp))
 			{
 				if(tempCard.frontFacing == false)
@@ -411,9 +416,18 @@ public class Deck : MonoBehaviour {
 					tempCard.flip();
 				}
 			}
-
+			else if(initialLayout == true)
+			{
+				tempCard.flipBackward();
+			}
+			
 			lastCard = tempCard;
 		}
+	}
+
+	public void LayoutDeck()
+	{
+		this.LayoutDeck(false);
 	}
 
 	public void faceCardsWithRange(int startIndex, int endIndex, bool isFrontFacing) //lays out deck, ensure first to last index faces direction
